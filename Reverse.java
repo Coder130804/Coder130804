@@ -1,42 +1,26 @@
 import java.util.*;
-class Node8
+class Reverse
 {
-  String data;
-  Node8 next;
-  Node8(String d)
-  {
-    data=d;
-  }
-}
-public class Reverse
-{
-  public static void main(String args[])
-  {
-    Scanner in=new Scanner(System.in);
-    String items[]=in.nextLine().split(",\\s*");
-    int l=in.nextInt(),r=in.nextInt();
-    Node8 d=new Node8(""),head=d;
-    for(String item:items)
-      head=head.next=new Node8(item);
-    head=d.next;
-    Node8 prev=d;
-    for(int i=1;i<l;i++)
-      prev=prev.next;
-    Node8 curr=prev.next;
-    for(int i=0;i<r-l;i++)
+    public static void main(String args[])
     {
-      Node8 temp=curr.next;
-      curr.next=temp.next;
-      temp.next=prev.next;
-      prev.next=temp;
+        Scanner in=new Scanner(System.in);
+        int n,d1,d2,d3,r;
+        System.out.println("Enter a no.");
+        n=in.nextInt();;
+        d1=n/100;
+        d2=(n/10)%10;
+        d3=(n%10);
+        r=(d3*100)+(d2*10)+d1;
+        if((d3==0 && d2==0) || (d3==0 && d2==0 && d1==0))
+        {
+           System.out.println("Reverse="+"00"+r);
+           return;
+        }
+        else if(d3==0)
+        {
+           System.out.println("Reverse="+"0"+r);
+           return;
+        }
+        System.out.println("Reverse="+r);
     }
-    List<String> res=new ArrayList<>();
-    Node8 out1=d.next;
-    while(out1!=null)
-    {
-      res.add("\""+out1.data+"\"");
-      out1=out1.next;
-    }
-    System.out.println(res);
-  }
 }
